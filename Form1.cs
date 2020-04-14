@@ -68,10 +68,9 @@ namespace LoLSummTimer
             detect.HookedKeys.Add(Keys.D5);
             detect.HookedKeys.Add(Keys.S);
             detect.HookedKeys.Add(Keys.N);
-            detect.HookedKeys.Add(Keys.I);
+            detect.HookedKeys.Add(Keys.Oemtilde);
             detect.HookedKeys.Add(Keys.LControlKey);
             detect.KeyDown += new KeyEventHandler(detect_KeyDown);
-
         }
 
         public enum GWL
@@ -215,38 +214,39 @@ namespace LoLSummTimer
                 Application.Restart();
                 Environment.Exit(0);
             }
-            else if (e.KeyCode == Keys.I)
+            else if (e.KeyCode == Keys.Oemtilde)
             {
-                BringMainWindowToFront("League of Legends");
-                copy = "";
 
-                if (tfLabelT > 0 && tfLabelT > gameTimer)
-                {
-                    copy = copy + "Top " + tfLabelTimer.ToString(@"mm\:ss") + "  ";
-                }
-                if (jfLabelT > 0 && jfLabelT > gameTimer)
-                {
-                    copy = copy + "Jung " + jfLabelTimer.ToString(@"mm\:ss") + "  ";
-                }
-                if (mfLabelT > 0 && mfLabelT > gameTimer)
-                {
-                    copy = copy + "Mid " + mfLabelTimer.ToString(@"mm\:ss") + "  ";
-                }
-                if (bfLabelT > 0 && bfLabelT > gameTimer)
-                {
-                    copy = copy + "Bot " + bfLabelTimer.ToString(@"mm\:ss") + "  ";
-                }
-                if (sfLabelT > 0 && sfLabelT > gameTimer)
-                {
-                    copy = copy + "Supp " + sfLabelTimer.ToString(@"mm\:ss") + "  ";
-                }
-                if (copy == "")
-                {
-                    copy = "gg";
-                }
-                SendKeys.Send("{ENTER}");
-                SendKeys.Send(copy);
-                SendKeys.Send("{ENTER}");
+                 BringMainWindowToFront("League of Legends");
+                 copy = "";
+
+                 if (tfLabelT > 0 && tfLabelT > gameTimer)
+                 {
+                      copy = copy + "Top " + tfLabelTimer.ToString(@"mm\:ss") + "  ";
+                 }
+                 if (jfLabelT > 0 && jfLabelT > gameTimer)
+                 {
+                      copy = copy + "Jung " + jfLabelTimer.ToString(@"mm\:ss") + "  ";
+                 }
+                 if (mfLabelT > 0 && mfLabelT > gameTimer)
+                 {
+                 copy = copy + "Mid " + mfLabelTimer.ToString(@"mm\:ss") + "  ";
+                 }
+                 if (bfLabelT > 0 && bfLabelT > gameTimer)
+                 {
+                      copy = copy + "Bot " + bfLabelTimer.ToString(@"mm\:ss") + "  ";
+                 }
+                 if (sfLabelT > 0 && sfLabelT > gameTimer)
+                 {
+                      copy = copy + "Supp " + sfLabelTimer.ToString(@"mm\:ss") + "  ";
+                 }
+                 if (copy == "")
+                 {
+                      copy = "gg";
+                 }
+                 SendKeys.Send("{ENTER}");
+                 SendKeys.Send(copy);
+                 SendKeys.Send("{ENTER}");
             }
         }
 

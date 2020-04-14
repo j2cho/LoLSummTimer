@@ -9,7 +9,11 @@ Instructions:
 
 
 Hotkeys:
-Ctrl+Shift+ following hotkeys
+
+Chat Macro: i (Hold until message is sent)
+
+
+LCtrl+ following hotkeys:
 
 Flashes and Reset (Same order as pictures in App)
 Top Flash: 1
@@ -21,4 +25,4 @@ Support Flash: 5
 App Functions (First letter of function)
 Start Timer: s
 New Game: n
-Chat Macro: c
+
