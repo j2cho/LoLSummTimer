@@ -13,24 +13,17 @@ namespace LoLSummTimer
 
         int tfTimeLeft, tfLabelT;
         TimeSpan tfTime, tfLabelTimer;
-
         int jfTimeLeft, jfLabelT;
         TimeSpan jfTime, jfLabelTimer;
-
         int mfTimeLeft, mfLabelT;
         TimeSpan mfTime, mfLabelTimer;
-
         int bfTimeLeft, bfLabelT;
         TimeSpan bfTime, bfLabelTimer;
-
         int sfTimeLeft, sfLabelT;
         TimeSpan sfTime, sfLabelTimer;
-
         int gameTimer;
         TimeSpan gameTime;
-
         string copy;
-
 
         [StructLayout(LayoutKind.Sequential)]
         public struct RECT
@@ -54,48 +47,57 @@ namespace LoLSummTimer
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SetForegroundWindow(IntPtr hwnd);
 
-        //globalKeyboardHook tf = new globalKeyboardHook();
-        //globalKeyboardHook jf = new globalKeyboardHook();
-        //globalKeyboardHook mf = new globalKeyboardHook();
-        //globalKeyboardHook bf = new globalKeyboardHook();
-        //globalKeyboardHook sf = new globalKeyboardHook();
-        globalKeyboardHook sg = new globalKeyboardHook();
-        //globalKeyboardHook ng = new globalKeyboardHook();
-        //globalKeyboardHook ch = new globalKeyboardHook();
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hWnd, GWL nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLong(IntPtr hWnd, GWL nIndex, int dwNewLong);
+
+        [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
+        public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
+
+        globalKeyboardHook detect = new globalKeyboardHook();
 
         public Form1()
         {
             InitializeComponent();
-            this.BackColor = Color.Magenta;
-            this.TransparencyKey = Color.Magenta;
+            detect.HookedKeys.Add(Keys.D1);
+            detect.HookedKeys.Add(Keys.D2);
+            detect.HookedKeys.Add(Keys.D3);
+            detect.HookedKeys.Add(Keys.D4);
+            detect.HookedKeys.Add(Keys.D5);
+            detect.HookedKeys.Add(Keys.S);
+            detect.HookedKeys.Add(Keys.N);
+            detect.HookedKeys.Add(Keys.I);
+            detect.HookedKeys.Add(Keys.LControlKey);
+            detect.KeyDown += new KeyEventHandler(detect_KeyDown);
 
-            //tf.unhook();
-            //jf.unhook();
-            //mf.unhook();
-            //bf.unhook();
-            //sf.unhook();
-            //ch.unhook();
-            //sg.hook();
-            //ng.hook();
+        }
 
-            //tf.HookedKeys.Add(Keys.N);
-            //tf.KeyDown += new KeyEventHandler(tf_KeyDown);
-            //jf.HookedKeys.Add(Keys.M);
-            //jf.KeyDown += new KeyEventHandler(jf_KeyDown);
-            //mf.HookedKeys.Add(Keys.Oemcomma);
-            //mf.KeyDown += new KeyEventHandler(mf_KeyDown);
-            //bf.HookedKeys.Add(Keys.OemPeriod);
-            //bf.KeyDown += new KeyEventHandler(bf_KeyDown);
-            //sf.HookedKeys.Add(Keys.OemBackslash);
-            //sf.KeyDown += new KeyEventHandler(sf_KeyDown);
-            //ch.HookedKeys.Add(Keys.L);
-            //ch.KeyDown += new KeyEventHandler(ch_KeyDown);
-            sg.HookedKeys.Add(Keys.D1);
-            sg.HookedKeys.Add(Keys.LControlKey);
-            sg.KeyDown += new KeyEventHandler(sg_KeyDown);
-            //ng.HookedKeys.Add(Keys.OemQuotes);
-            //ng.KeyDown += new KeyEventHandler(ng_KeyDown);
+        public enum GWL
+        {
+            ExStyle = -20
+        }
 
+        public enum WS_EX
+        {
+            Transparent = 0x20,
+            Layered = 0x80000
+        }
+
+        public enum LWA
+        {
+            ColorKey = 0x1,
+            Alpha = 0x2
+        }
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            int wl = GetWindowLong(this.Handle, GWL.ExStyle);
+            wl = wl | 0x80000 | 0x20;
+            SetWindowLong(this.Handle, GWL.ExStyle, wl);
+            SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
         }
 
         private enum ShowWindowEnum
@@ -122,172 +124,159 @@ namespace LoLSummTimer
             }
         }
 
-        void tf_KeyDown(object sender, KeyEventArgs e)
+        void detect_KeyDown(object sender, KeyEventArgs e)
         {
-            BringMainWindowToFront("League of Legends");
-            timer1.Stop();
-
-            tfLabelT = 0;
-
-            startTFTimer();
-            tfStart.ForeColor = Color.White;
-            tfStart.Font = new Font("Arial", 7, FontStyle.Bold);
-
-            tfLabelT = tfTimeLeft + gameTimer;
-            tfLabelTimer = TimeSpan.FromSeconds(tfLabelT);
-            tfLabel.Text = tfLabelTimer.ToString(@"mm\:ss");
-        }
-
-        void jf_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-            timer3.Stop();
-
-            jfLabelT = 0;
-
-            startJFTimer();
-            jfStart.ForeColor = Color.White;
-            jfStart.Font = new Font("Arial", 7, FontStyle.Bold);
-
-            jfLabelT = jfTimeLeft + gameTimer;
-            jfLabelTimer = TimeSpan.FromSeconds(jfLabelT);
-            jfLabel.Text = jfLabelTimer.ToString(@"mm\:ss");
-        }
-
-        void mf_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-            timer4.Stop();
-
-            mfLabelT = 0;
-
-            startMFTimer();
-            mfStart.ForeColor = Color.White;
-            mfStart.Font = new Font("Arial", 7, FontStyle.Bold);
-
-            mfLabelT = mfTimeLeft + gameTimer;
-            mfLabelTimer = TimeSpan.FromSeconds(mfLabelT);
-            mfLabel.Text = mfLabelTimer.ToString(@"mm\:ss");
-        }
-
-        void bf_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-            timer5.Stop();
-
-            bfLabelT = 0;
-
-            startBFTimer();
-            bfStart.ForeColor = Color.White;
-            bfStart.Font = new Font("Arial", 7, FontStyle.Bold);
-
-            bfLabelT = bfTimeLeft + gameTimer;
-            bfLabelTimer = TimeSpan.FromSeconds(bfLabelT);
-            bfLabel.Text = bfLabelTimer.ToString(@"mm\:ss");
-        }
-
-        void sf_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-            timer6.Stop();
-
-            sfLabelT = 0;
-
-            startSFTimer();
-            sfStart.ForeColor = Color.White;
-            sfStart.Font = new Font("Arial", 7, FontStyle.Bold);
-
-            sfLabelT = sfTimeLeft + gameTimer;
-            sfLabelTimer = TimeSpan.FromSeconds(sfLabelT);
-            sfLabel.Text = sfLabelTimer.ToString(@"mm\:ss");
-        }
-
-        void sg_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-
-            //tf.hook();
-            //jf.hook();
-            //mf.hook();
-            //bf.hook();
-            //sf.hook();
-            //ch.hook();
-
-            timer2.Stop();
-            gameTimer = 10;
-            timer2.Start();
-            startGameTime.Font = new Font("Open Sans Extrabold", 9, FontStyle.Bold);
-        }
-
-        void ng_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-            Form1 NewForm = new Form1();
-            NewForm.Show();
-            this.Dispose(false);
-        }
-
-        void ch_KeyDown(object sender, KeyEventArgs e)
-        {
-            BringMainWindowToFront("League of Legends");
-            copy = "";
-
-            if (tfLabelT > 0 && tfLabelT > gameTimer)
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
             {
-                copy = copy + "Top " + tfLabelTimer.ToString(@"mm\:ss") + "  ";
+                BringMainWindowToFront("League of Legends");
+
+                timer2.Stop();
+                gameTimer = 10;
+                timer2.Start();
+                startGameTime.Font = new Font("Open Sans Extrabold", 9, FontStyle.Bold);
             }
-            if (jfLabelT > 0 && jfLabelT > gameTimer)
+            else if (e.KeyCode == Keys.D1 && e.Modifiers == Keys.Control)
             {
-                copy = copy + "Jung " + jfLabelTimer.ToString(@"mm\:ss") + "  ";
+                BringMainWindowToFront("League of Legends");
+                timer1.Stop();
+
+                tfLabelT = 0;
+
+                startTFTimer();
+                tfStart.ForeColor = Color.White;
+                tfStart.Font = new Font("Arial", 7, FontStyle.Bold);
+
+                tfLabelT = tfTimeLeft + gameTimer;
+                tfLabelTimer = TimeSpan.FromSeconds(tfLabelT);
+                tfLabel.Text = tfLabelTimer.ToString(@"mm\:ss");
             }
-            if (mfLabelT > 0 && mfLabelT > gameTimer)
+            else if (e.KeyCode == Keys.D2 && e.Modifiers == Keys.Control)
             {
-                copy = copy + "Mid " + mfLabelTimer.ToString(@"mm\:ss") + "  ";
+                BringMainWindowToFront("League of Legends");
+                timer3.Stop();
+
+                jfLabelT = 0;
+
+                startJFTimer();
+                jfStart.ForeColor = Color.White;
+                jfStart.Font = new Font("Arial", 7, FontStyle.Bold);
+
+                jfLabelT = jfTimeLeft + gameTimer;
+                jfLabelTimer = TimeSpan.FromSeconds(jfLabelT);
+                jfLabel.Text = jfLabelTimer.ToString(@"mm\:ss");
             }
-            if (bfLabelT > 0 && bfLabelT > gameTimer)
+            else if (e.KeyCode == Keys.D3 && e.Modifiers == Keys.Control)
             {
-                copy = copy + "Bot " + bfLabelTimer.ToString(@"mm\:ss") + "  ";
+                BringMainWindowToFront("League of Legends");
+                timer4.Stop();
+
+                mfLabelT = 0;
+
+                startMFTimer();
+                mfStart.ForeColor = Color.White;
+                mfStart.Font = new Font("Arial", 7, FontStyle.Bold);
+
+                mfLabelT = mfTimeLeft + gameTimer;
+                mfLabelTimer = TimeSpan.FromSeconds(mfLabelT);
+                mfLabel.Text = mfLabelTimer.ToString(@"mm\:ss");
             }
-            if (sfLabelT > 0 && sfLabelT > gameTimer)
+            else if (e.KeyCode == Keys.D4 && e.Modifiers == Keys.Control)
             {
-                copy = copy + "Supp " + sfLabelTimer.ToString(@"mm\:ss") + "  ";
+                BringMainWindowToFront("League of Legends");
+                timer5.Stop();
+
+                bfLabelT = 0;
+
+                startBFTimer();
+                bfStart.ForeColor = Color.White;
+                bfStart.Font = new Font("Arial", 7, FontStyle.Bold);
+
+                bfLabelT = bfTimeLeft + gameTimer;
+                bfLabelTimer = TimeSpan.FromSeconds(bfLabelT);
+                bfLabel.Text = bfLabelTimer.ToString(@"mm\:ss");
             }
-            if (copy == "")
+            else if (e.KeyCode == Keys.D5 && e.Modifiers == Keys.Control)
             {
-                copy = "gg";
+                BringMainWindowToFront("League of Legends");
+                timer6.Stop();
+
+                sfLabelT = 0;
+
+                startSFTimer();
+                sfStart.ForeColor = Color.White;
+                sfStart.Font = new Font("Arial", 7, FontStyle.Bold);
+
+                sfLabelT = sfTimeLeft + gameTimer;
+                sfLabelTimer = TimeSpan.FromSeconds(sfLabelT);
+                sfLabel.Text = sfLabelTimer.ToString(@"mm\:ss");
             }
-            SendKeys.Send("{ENTER}");
-            SendKeys.Send(copy);
-            SendKeys.Send("{ENTER}");
+            else if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)
+            {
+                Application.Restart();
+                Environment.Exit(0);
+            }
+            else if (e.KeyCode == Keys.I)
+            {
+                BringMainWindowToFront("League of Legends");
+                copy = "";
+
+                if (tfLabelT > 0 && tfLabelT > gameTimer)
+                {
+                    copy = copy + "Top " + tfLabelTimer.ToString(@"mm\:ss") + "  ";
+                }
+                if (jfLabelT > 0 && jfLabelT > gameTimer)
+                {
+                    copy = copy + "Jung " + jfLabelTimer.ToString(@"mm\:ss") + "  ";
+                }
+                if (mfLabelT > 0 && mfLabelT > gameTimer)
+                {
+                    copy = copy + "Mid " + mfLabelTimer.ToString(@"mm\:ss") + "  ";
+                }
+                if (bfLabelT > 0 && bfLabelT > gameTimer)
+                {
+                    copy = copy + "Bot " + bfLabelTimer.ToString(@"mm\:ss") + "  ";
+                }
+                if (sfLabelT > 0 && sfLabelT > gameTimer)
+                {
+                    copy = copy + "Supp " + sfLabelTimer.ToString(@"mm\:ss") + "  ";
+                }
+                if (copy == "")
+                {
+                    copy = "gg";
+                }
+                SendKeys.Send("{ENTER}");
+                SendKeys.Send(copy);
+                SendKeys.Send("{ENTER}");
+            }
         }
 
         public void startTFTimer()
         {
-            tfTimeLeft = 300;
+            tfTimeLeft = 295;
             timer1.Start();
         }
 
         public void startJFTimer()
         {
-            jfTimeLeft = 300;
+            jfTimeLeft = 295;
             timer3.Start();
         }
 
         public void startMFTimer()
         {
-            mfTimeLeft = 300;
+            mfTimeLeft = 295;
             timer4.Start();
         }
 
         public void startBFTimer()
         {
-            bfTimeLeft = 300;
+            bfTimeLeft = 295;
             timer5.Start();
         }
 
         public void startSFTimer()
         {
-            sfTimeLeft = 300;
+            sfTimeLeft = 295;
             timer6.Start();
         }
 
@@ -411,7 +400,7 @@ namespace LoLSummTimer
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                this.Location = new Point(rect.X + 1220, rect.Y + 890);
+                this.Location = new Point(rect.X + 1260, rect.Y + 890);
             }
         }
     }

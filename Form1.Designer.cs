@@ -74,7 +74,7 @@
             this.tfLabel.BackColor = System.Drawing.Color.White;
             this.tfLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tfLabel.Font = new System.Drawing.Font("Open Sans Extrabold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tfLabel.Location = new System.Drawing.Point(87, 12);
+            this.tfLabel.Location = new System.Drawing.Point(74, 1);
             this.tfLabel.Name = "tfLabel";
             this.tfLabel.Size = new System.Drawing.Size(51, 24);
             this.tfLabel.TabIndex = 14;
@@ -85,7 +85,7 @@
             this.jfLabel.BackColor = System.Drawing.Color.White;
             this.jfLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.jfLabel.Font = new System.Drawing.Font("Open Sans Extrabold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jfLabel.Location = new System.Drawing.Point(87, 42);
+            this.jfLabel.Location = new System.Drawing.Point(74, 26);
             this.jfLabel.Name = "jfLabel";
             this.jfLabel.Size = new System.Drawing.Size(51, 24);
             this.jfLabel.TabIndex = 16;
@@ -116,7 +116,7 @@
             this.mfLabel.BackColor = System.Drawing.Color.White;
             this.mfLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mfLabel.Font = new System.Drawing.Font("Open Sans Extrabold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mfLabel.Location = new System.Drawing.Point(87, 72);
+            this.mfLabel.Location = new System.Drawing.Point(74, 51);
             this.mfLabel.Name = "mfLabel";
             this.mfLabel.Size = new System.Drawing.Size(51, 24);
             this.mfLabel.TabIndex = 18;
@@ -127,7 +127,7 @@
             this.bfLabel.BackColor = System.Drawing.Color.White;
             this.bfLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bfLabel.Font = new System.Drawing.Font("Open Sans Extrabold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bfLabel.Location = new System.Drawing.Point(87, 102);
+            this.bfLabel.Location = new System.Drawing.Point(74, 76);
             this.bfLabel.Name = "bfLabel";
             this.bfLabel.Size = new System.Drawing.Size(51, 24);
             this.bfLabel.TabIndex = 20;
@@ -138,7 +138,7 @@
             this.sfLabel.BackColor = System.Drawing.Color.White;
             this.sfLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sfLabel.Font = new System.Drawing.Font("Open Sans Extrabold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sfLabel.Location = new System.Drawing.Point(87, 132);
+            this.sfLabel.Location = new System.Drawing.Point(74, 101);
             this.sfLabel.Name = "sfLabel";
             this.sfLabel.Size = new System.Drawing.Size(51, 24);
             this.sfLabel.TabIndex = 22;
@@ -159,7 +159,7 @@
             this.startGameTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startGameTime.Font = new System.Drawing.Font("Open Sans Extrabold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startGameTime.ForeColor = System.Drawing.Color.White;
-            this.startGameTime.Location = new System.Drawing.Point(35, 153);
+            this.startGameTime.Location = new System.Drawing.Point(26, 122);
             this.startGameTime.Name = "startGameTime";
             this.startGameTime.Size = new System.Drawing.Size(79, 28);
             this.startGameTime.TabIndex = 13;
@@ -176,7 +176,7 @@
             this.sfStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sfStart.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sfStart.ForeColor = System.Drawing.Color.Green;
-            this.sfStart.Location = new System.Drawing.Point(40, 132);
+            this.sfStart.Location = new System.Drawing.Point(27, 101);
             this.sfStart.Name = "sfStart";
             this.sfStart.Size = new System.Drawing.Size(45, 24);
             this.sfStart.TabIndex = 21;
@@ -193,7 +193,7 @@
             this.bfStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bfStart.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bfStart.ForeColor = System.Drawing.Color.Green;
-            this.bfStart.Location = new System.Drawing.Point(40, 102);
+            this.bfStart.Location = new System.Drawing.Point(27, 76);
             this.bfStart.Name = "bfStart";
             this.bfStart.Size = new System.Drawing.Size(45, 24);
             this.bfStart.TabIndex = 19;
@@ -210,7 +210,7 @@
             this.mfStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mfStart.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mfStart.ForeColor = System.Drawing.Color.Green;
-            this.mfStart.Location = new System.Drawing.Point(40, 72);
+            this.mfStart.Location = new System.Drawing.Point(27, 51);
             this.mfStart.Name = "mfStart";
             this.mfStart.Size = new System.Drawing.Size(45, 24);
             this.mfStart.TabIndex = 17;
@@ -227,7 +227,7 @@
             this.jfStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.jfStart.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jfStart.ForeColor = System.Drawing.Color.Green;
-            this.jfStart.Location = new System.Drawing.Point(40, 42);
+            this.jfStart.Location = new System.Drawing.Point(27, 26);
             this.jfStart.Name = "jfStart";
             this.jfStart.Size = new System.Drawing.Size(45, 24);
             this.jfStart.TabIndex = 15;
@@ -244,7 +244,7 @@
             this.tfStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tfStart.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tfStart.ForeColor = System.Drawing.Color.Green;
-            this.tfStart.Location = new System.Drawing.Point(40, 12);
+            this.tfStart.Location = new System.Drawing.Point(27, 1);
             this.tfStart.Name = "tfStart";
             this.tfStart.Size = new System.Drawing.Size(45, 24);
             this.tfStart.TabIndex = 12;
@@ -257,7 +257,7 @@
             this.pictureBox5.BackgroundImage = global::LoLSummTimer.Properties.Resources.support;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 132);
+            this.pictureBox5.Location = new System.Drawing.Point(1, 101);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(24, 24);
             this.pictureBox5.TabIndex = 10;
@@ -269,7 +269,7 @@
             this.pictureBox4.BackgroundImage = global::LoLSummTimer.Properties.Resources.BotLane_1;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 102);
+            this.pictureBox4.Location = new System.Drawing.Point(1, 76);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(24, 24);
             this.pictureBox4.TabIndex = 9;
@@ -281,7 +281,7 @@
             this.pictureBox3.BackgroundImage = global::LoLSummTimer.Properties.Resources.mid;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 72);
+            this.pictureBox3.Location = new System.Drawing.Point(1, 51);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(24, 24);
             this.pictureBox3.TabIndex = 8;
@@ -293,7 +293,7 @@
             this.pictureBox2.BackgroundImage = global::LoLSummTimer.Properties.Resources.Jungle;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 42);
+            this.pictureBox2.Location = new System.Drawing.Point(1, 26);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.TabIndex = 7;
@@ -305,7 +305,7 @@
             this.pictureBox1.BackgroundImage = global::LoLSummTimer.Properties.Resources.TopLane;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.TabIndex = 6;
@@ -317,7 +317,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(149, 186);
+            this.ClientSize = new System.Drawing.Size(126, 149);
             this.Controls.Add(this.sfLabel);
             this.Controls.Add(this.sfStart);
             this.Controls.Add(this.bfLabel);
@@ -339,8 +339,8 @@
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(149, 186);
-            this.MinimumSize = new System.Drawing.Size(149, 186);
+            this.MaximumSize = new System.Drawing.Size(126, 149);
+            this.MinimumSize = new System.Drawing.Size(126, 149);
             this.Name = "Form1";
             this.Text = "JJ\'s LoL Summ Timer";
             this.TopMost = true;
