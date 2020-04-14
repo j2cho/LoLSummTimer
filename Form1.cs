@@ -54,14 +54,14 @@ namespace LoLSummTimer
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SetForegroundWindow(IntPtr hwnd);
 
-        globalKeyboardHook tf = new globalKeyboardHook();
-        globalKeyboardHook jf = new globalKeyboardHook();
-        globalKeyboardHook mf = new globalKeyboardHook();
-        globalKeyboardHook bf = new globalKeyboardHook();
-        globalKeyboardHook sf = new globalKeyboardHook();
+        //globalKeyboardHook tf = new globalKeyboardHook();
+        //globalKeyboardHook jf = new globalKeyboardHook();
+        //globalKeyboardHook mf = new globalKeyboardHook();
+        //globalKeyboardHook bf = new globalKeyboardHook();
+        //globalKeyboardHook sf = new globalKeyboardHook();
         globalKeyboardHook sg = new globalKeyboardHook();
-        globalKeyboardHook ng = new globalKeyboardHook();
-        globalKeyboardHook ch = new globalKeyboardHook();
+        //globalKeyboardHook ng = new globalKeyboardHook();
+        //globalKeyboardHook ch = new globalKeyboardHook();
 
         public Form1()
         {
@@ -69,33 +69,33 @@ namespace LoLSummTimer
             this.BackColor = Color.Magenta;
             this.TransparencyKey = Color.Magenta;
 
-            tf.unhook();
-            jf.unhook();
-            mf.unhook();
-            bf.unhook();
-            sf.unhook();
-            ch.unhook();
-            sg.hook();
-            ng.hook();
+            //tf.unhook();
+            //jf.unhook();
+            //mf.unhook();
+            //bf.unhook();
+            //sf.unhook();
+            //ch.unhook();
+            //sg.hook();
+            //ng.hook();
 
-            tf.HookedKeys.Add(Keys.N);
-            tf.KeyDown += new KeyEventHandler(tf_KeyDown);
-            jf.HookedKeys.Add(Keys.M);
-            jf.KeyDown += new KeyEventHandler(jf_KeyDown);
-            mf.HookedKeys.Add(Keys.Oemcomma);
-            mf.KeyDown += new KeyEventHandler(mf_KeyDown);
-            bf.HookedKeys.Add(Keys.OemPeriod);
-            bf.KeyDown += new KeyEventHandler(bf_KeyDown);
-            sf.HookedKeys.Add(Keys.OemBackslash);
-            sf.KeyDown += new KeyEventHandler(sf_KeyDown);
-            ch.HookedKeys.Add(Keys.L);
-            ch.KeyDown += new KeyEventHandler(ch_KeyDown);
+            //tf.HookedKeys.Add(Keys.N);
+            //tf.KeyDown += new KeyEventHandler(tf_KeyDown);
+            //jf.HookedKeys.Add(Keys.M);
+            //jf.KeyDown += new KeyEventHandler(jf_KeyDown);
+            //mf.HookedKeys.Add(Keys.Oemcomma);
+            //mf.KeyDown += new KeyEventHandler(mf_KeyDown);
+            //bf.HookedKeys.Add(Keys.OemPeriod);
+            //bf.KeyDown += new KeyEventHandler(bf_KeyDown);
+            //sf.HookedKeys.Add(Keys.OemBackslash);
+            //sf.KeyDown += new KeyEventHandler(sf_KeyDown);
+            //ch.HookedKeys.Add(Keys.L);
+            //ch.KeyDown += new KeyEventHandler(ch_KeyDown);
             sg.HookedKeys.Add(Keys.D1);
             sg.HookedKeys.Add(Keys.LControlKey);
             sg.KeyDown += new KeyEventHandler(sg_KeyDown);
-            ng.HookedKeys.Add(Keys.OemQuotes);
-            ng.KeyDown += new KeyEventHandler(ng_KeyDown);
-            
+            //ng.HookedKeys.Add(Keys.OemQuotes);
+            //ng.KeyDown += new KeyEventHandler(ng_KeyDown);
+
         }
 
         private enum ShowWindowEnum
@@ -136,7 +136,6 @@ namespace LoLSummTimer
             tfLabelT = tfTimeLeft + gameTimer;
             tfLabelTimer = TimeSpan.FromSeconds(tfLabelT);
             tfLabel.Text = tfLabelTimer.ToString(@"mm\:ss");
-            e.Handled = true;
         }
 
         void jf_KeyDown(object sender, KeyEventArgs e)
@@ -153,7 +152,6 @@ namespace LoLSummTimer
             jfLabelT = jfTimeLeft + gameTimer;
             jfLabelTimer = TimeSpan.FromSeconds(jfLabelT);
             jfLabel.Text = jfLabelTimer.ToString(@"mm\:ss");
-            e.Handled = true;
         }
 
         void mf_KeyDown(object sender, KeyEventArgs e)
@@ -170,7 +168,6 @@ namespace LoLSummTimer
             mfLabelT = mfTimeLeft + gameTimer;
             mfLabelTimer = TimeSpan.FromSeconds(mfLabelT);
             mfLabel.Text = mfLabelTimer.ToString(@"mm\:ss");
-            e.Handled = true;
         }
 
         void bf_KeyDown(object sender, KeyEventArgs e)
@@ -187,7 +184,6 @@ namespace LoLSummTimer
             bfLabelT = bfTimeLeft + gameTimer;
             bfLabelTimer = TimeSpan.FromSeconds(bfLabelT);
             bfLabel.Text = bfLabelTimer.ToString(@"mm\:ss");
-            e.Handled = true;
         }
 
         void sf_KeyDown(object sender, KeyEventArgs e)
@@ -204,25 +200,23 @@ namespace LoLSummTimer
             sfLabelT = sfTimeLeft + gameTimer;
             sfLabelTimer = TimeSpan.FromSeconds(sfLabelT);
             sfLabel.Text = sfLabelTimer.ToString(@"mm\:ss");
-            e.Handled = true;
         }
 
         void sg_KeyDown(object sender, KeyEventArgs e)
         {
             BringMainWindowToFront("League of Legends");
 
-            tf.hook();
-            jf.hook();
-            mf.hook();
-            bf.hook();
-            sf.hook();
-            ch.hook();
+            //tf.hook();
+            //jf.hook();
+            //mf.hook();
+            //bf.hook();
+            //sf.hook();
+            //ch.hook();
 
             timer2.Stop();
             gameTimer = 10;
             timer2.Start();
             startGameTime.Font = new Font("Open Sans Extrabold", 9, FontStyle.Bold);
-            e.Handled = true;
         }
 
         void ng_KeyDown(object sender, KeyEventArgs e)
@@ -231,7 +225,6 @@ namespace LoLSummTimer
             Form1 NewForm = new Form1();
             NewForm.Show();
             this.Dispose(false);
-            e.Handled = true;
         }
 
         void ch_KeyDown(object sender, KeyEventArgs e)
@@ -266,7 +259,6 @@ namespace LoLSummTimer
             SendKeys.Send("{ENTER}");
             SendKeys.Send(copy);
             SendKeys.Send("{ENTER}");
-            e.Handled = true;
         }
 
         public void startTFTimer()
