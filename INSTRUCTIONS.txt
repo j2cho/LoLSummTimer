@@ -1,0 +1,24 @@
+Instructions:
+
+1. Start LoL and this app by going to bin/debug/LolSummTimer.exe (DO NOT start the game timer)
+2. Wait until game starts and start the timer when game timer is 10 seconds in
+3. Use hotkeys to start flash timers
+4. Use the chat hotkey to auto paste the times in chat (DO NOT click mouse until the message is sent)
+5. Reuse flash hotkeys if you made a mistake and want to reset the flash timer
+6. Use the new game hotkey to reset everything
+
+
+Hotkeys:
+Ctrl+Shift+ following hotkeys
+
+Flashes and Reset (Same order as pictures in App)
+Top Flash: 1
+Jungle Flash: 2
+Mid Flash: 3
+Bottom Flash: 4
+Support Flash: 5
+
+App Functions (First letter of function)
+Start Timer: s
+New Game: n
+Chat Macro: c
