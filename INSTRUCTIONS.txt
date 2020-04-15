@@ -10,7 +10,7 @@ Instructions:
 
 Hotkeys:
 
-Chat Macro: i (Hold until message is sent)
+Chat Macro: ~ (DO NOT hold key)
 
 
 LCtrl+ following hotkeys:
@@ -26,3 +26,7 @@ App Functions (First letter of function)
 Start Timer: s
 New Game: n
 
+Time Adjust:
++1s: [
++10s: ]
++60s: '
